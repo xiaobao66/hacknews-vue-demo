@@ -36,7 +36,7 @@ module.exports = {
         alias: {
             'vue': 'vue/dist/vue.js'
         },
-        extensions: ['.js', '.vue', '*']
+        extensions: ['*', '.js', '.vue']
     },
     plugins: [
         new htmlWebpackPlugin({
