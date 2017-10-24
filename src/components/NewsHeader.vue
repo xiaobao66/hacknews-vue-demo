@@ -1,13 +1,13 @@
 <template>
     <div class="header-container">
         <img src="../assets/y18.gif" alt="logo" class="header-logo">
-        <a href="https://news.ycombinator.com" class="header-title">Hacker News</a>
+        <a href="#/" class="header-title">Hacker News</a>
         <ul class="header-nav">
             <li v-for="item in items">
-                <a :href="item.url">{{item.content}}</a>
+                <router-link :to="item.url">{{item.content}}</router-link>
             </li>
         </ul>
-        <a href="https://news.ycombinator.com/login" class="header-login">login</a>
+        <router-link to="/login" class="header-login">login</router-link>
     </div>
 </template>
 
@@ -70,7 +70,8 @@
 </style>
 
 <script>
-    let urlPrefix = 'https://news.ycombinator.com';
+    // let urlPrefix = 'https://news.ycombinator.com'
+    let urlPrefix = ''
 
     export default {
         data() {
