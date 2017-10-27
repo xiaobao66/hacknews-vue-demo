@@ -8,6 +8,24 @@ Vue.use(VueRouter)
 let routes = [{
     path: '/',
     component: NewsList
+}, {
+    path: '/newest',
+    component: NewsList
+}, {
+    path: '/newcomments',
+    component: NewsList
+}, {
+    path: '/show',
+    component: NewsList
+}, {
+    path: '/ask',
+    component: NewsList
+}, {
+    path: '/jobs',
+    component: NewsList
+}, {
+    path: '/submit',
+    component: NewsList
 }]
 
 let router = new VueRouter({
