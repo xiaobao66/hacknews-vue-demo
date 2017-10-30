@@ -64,6 +64,10 @@
         color: #000;
     }
 
+    .header-nav .header-link-active {
+        color: #fff;
+    }
+
     /*.header-nav a:hover, .header-login:hover {
         text-decoration: underline;
     }*/

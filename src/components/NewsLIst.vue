@@ -32,7 +32,7 @@
             get(url) {
                 return Promise.resolve($.ajax(url))
             },
-            getNewsByCategory(route) {
+            async getNewsByCategory(route) {
                 let _this = this
 
                 _this.currentPath = route.path
@@ -42,7 +42,28 @@
                     return;
                 }
 
-                _this.get(config[route.path])
+                try {
+                    let stories = await _this.get(config[route.path])
+
+                    let newsItemAsyncList = stories.slice(0, 30).map(async itemId => await _this.get(`https://hacker-news.firebaseio.com/v0/item/${itemId}.json`))
+
+                    let newsItems = []
+
+                    for (let newsItemAsync of newsItemAsyncList) {
+                        newsItems.push(await newsItemAsync)
+                    }
+
+                    if(route.path !== _this.currentPath) {
+                        return;
+                    }
+
+                    _this.newsItems = newsItems
+                    _this.loading = false
+                } catch (err) {
+                    console.error('error occur', err)
+                }
+
+                /*_this.get(config[route.path])
                     .then(function (stories) {
                         return Promise.all(stories.slice(0, 30).map(itemId => _this.get(`https://hacker-news.firebaseio.com/v0/item/${itemId}.json`)))
                     })
@@ -55,7 +76,7 @@
                     })
                     .catch(function (err) {
                         console.error('error occur', err)
-                    })
+                    })*/
             }
         },
         mounted() {

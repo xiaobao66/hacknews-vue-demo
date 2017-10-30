@@ -29,7 +29,8 @@ let routes = [{
 }]
 
 let router = new VueRouter({
-    routes
+    routes,
+    linkActiveClass: 'header-link-active'
 })
 
 new Vue({
